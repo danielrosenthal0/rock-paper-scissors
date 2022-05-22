@@ -1,8 +1,11 @@
+ //getting user input
 let playerSelection = prompt("Please enter rock, paper, or scissors: ");
-//console.log(playerSelection)
-function computerPlay() {
+    
+
+
+
+function computerPlay() { //randomizing computer selection
     let random = Math.floor(Math.random()* 3) + 1;
-    //console.log(com)
     if (random === 1) {
         computerSelection = "Rock";
     } else if (random === 2) {
@@ -12,17 +15,17 @@ function computerPlay() {
     }
     return computerSelection;
 }
-//console.log(computerPlay())
-//console.log(computerPlay())
-computerSelection = computerSelection.toUpperCase();
-    //console.log(computerSelection)
-    playerSelection = playerSelection.toUpperCase();
-    //console.log(playerSelection)
-    let areEqual = computerSelection === playerSelection;
-    //console.log(areEqual)
+computerPlay();
+console.log(playerSelection)
+console.log(computerSelection)
 
 function play(computerSelection, playerSelection) {
-
+    // checking for tie
+    computerSelection = computerSelection.toUpperCase();
+    playerSelection = playerSelection.toUpperCase();
+    let areEqual = computerSelection === playerSelection;
+    
+    //evaluating answers to find result of game
     if (areEqual === true) {
         return "Tie! Play again.";
     } else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
@@ -39,5 +42,4 @@ function play(computerSelection, playerSelection) {
         return "Rock beats scissors! You win. Play again.";
     } 
 }
-
-console.log(play(computerSelection,playerSelection))
+console.log(play(computerSelection, playerSelection))
