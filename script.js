@@ -10,37 +10,21 @@
 let playerSelection = '';
 //functions to attach to event listeners instead of having user type
 function playerSelectRock() {
-    if (wins == 5 )  {
-        winner.textContent = 'You win! Congratulations.';
-    } else if (losses == 5) {
-        winner.textContent = 'The computer won. Sorry!';
-    } else {
-        playerSelection = 'rock';
-        display.textContent = play(computerPlay(),playerSelection);
-        score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
-    }
+    playerSelection = 'rock';
+    display.textContent = play(computerPlay(),playerSelection);
+    score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
 }
+
 function playerSelectPaper() {
-    if (wins == 5 )  {
-        winner.textContent = 'You win! Congratulations.';
-    } else if (losses == 5) {
-        winner.textContent = 'The computer won. Sorry!';
-    } else {
-        playerSelection = 'paper';
-        display.textContent = play(computerPlay(),playerSelection);
-        score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
-    }
+    playerSelection = 'paper';
+    display.textContent = play(computerPlay(),playerSelection);
+    score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
 }
+
 function playerSelectScissors() {
-    if (wins == 5 )  {
-        winner.textContent = 'You win! Congratulations.';
-    } else if (losses == 5) {
-        winner.textContent = 'The computer won. Sorry!';
-    } else {
-        playerSelection = 'scissors';
-        display.textContent = play(computerPlay(),playerSelection);
-        score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
-    }
+    playerSelection = 'scissors';
+    display.textContent = play(computerPlay(),playerSelection);
+    score.textContent = 'Score: ' + wins + ' wins, ' + losses + ' losses, and ' + ties + ' ties';
 }
 
 //adding listeners
@@ -109,6 +93,14 @@ function play(computerSelection, playerSelection) {
         message = "Rock beats scissors! You win. Play again.";
         
     } 
+
+    //determining when 5 points reached
+    if (wins == 5 || losses == 5)  {
+        winner.textContent = 'You win! Congratulations.';
+        rock.removeEventListener('click', playerSelectRock);
+        paper.removeEventListener('click', playerSelectPaper);
+        scissors.removeEventListener('click', playerSelectScissors);
+    }
     return message;
 }
 
